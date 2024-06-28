@@ -1,13 +1,15 @@
-<div class="">
-    <h1>Weather</h1>
-    <form (ngSubmit)="searchWeather(city)">
-        <input class="form-control" type="text" [(ngModel)]="city" name="city" placeholder="Enter City">
-        <button class="btn btn-primary">Search</button>
-    </form>
+<div class="d-flex justify-content-center mt-5">
+    <div class="p-4 border border-2 rounded shadow-sm w-50 text-center">
+        <h1>Weather</h1>
+        <form (ngSubmit)="searchWeather(city)" class="d-flex gap-3 mt-3">
+            <input class="form-control" type="text" [(ngModel)]="city" name="city" placeholder="Enter City">
+            <button class="btn btn-primary">Search</button>
+        </form>
 
-    <div>
-        <p>{{weather.City}}</p>
-        <p>{{weather.Weather}}</p>
-        <img src={{weather.Image}} alt="">
+        <div class="border border-2 bg-light mt-4 rounded p-4">
+            <h2>{{weather.City}} Weather</h2>
+            <p>{{weather.Weather}}</p>
+            <img src={{weather.Image}} alt="" class="w-25 mt-3" >
+        </div>
     </div>
 </div>
