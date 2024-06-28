@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { WeatherListService } from '../weather-list.service';
+import { Weather } from '../weather.model';
+import { WeatherService } from '../weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -7,16 +8,23 @@ import { WeatherListService } from '../weather-list.service';
   styleUrl: './weather.component.css'
 })
 export class WeatherComponent {
-  allWeather: any;
+  allWeather: Weather [] = [];
+  oneWeather: Weather[] = [];
   city: string = '';
-  weather: any;
-  constructor(srv: WeatherListService) {
-    this.allWeather = srv.getWeatherList();
+  constructor(private weatherService: WeatherService) {
+  
     
   }
-  searchWeather(city: string){
-    this.weather = this.allWeather.find((w:any)=> w.City == city);
-    console.log(this.weather);
+  ngOnInit() : void {
+    this.weatherService.getWeather().subscribe(data => {
+      console.log(data)
+      this.allWeather = data;
+    })
   }
 
+  searchWeather() : void {
+    if(this.city) {
+      this.oneWeather = this.allWeather.filter(weather => weather.city.includes(this.city))
+    }
+  }
 }
