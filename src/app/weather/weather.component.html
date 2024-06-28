@@ -1,0 +1,13 @@
+<div class="">
+    <h1>Weather</h1>
+    <form (ngSubmit)="searchWeather(city)">
+        <input class="form-control" type="text" [(ngModel)]="city" name="city" placeholder="Enter City">
+        <button class="btn btn-primary">Search</button>
+    </form>
+
+    <div>
+        <p>{{weather.City}}</p>
+        <p>{{weather.Weather}}</p>
+        <img src={{weather.Image}} alt="">
+    </div>
+</div>
